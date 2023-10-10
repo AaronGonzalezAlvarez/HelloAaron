@@ -27,6 +27,7 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
+import androidx.compose.material3.Icon
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -41,7 +42,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    GreetingImage("La casa del dragón.","Temporada 2")
+                    Greeting()
                 }
             }
         }
@@ -49,149 +50,77 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun GreetingText(message: String, from: String, textTwo: String, modifier: Modifier = Modifier) {
-    Column(
-        verticalArrangement = Arrangement.Top,
-        /*modifier = modifier.padding(8.dp)*/
-        modifier = modifier
-        ) {
-        Text(
-            text = message,
-            //fontSize = 100.sp,
-            fontSize = 25.sp,
-            //lineHeight = 116.sp,
-            textAlign = TextAlign.Center
-        )
-        Text(
-            text = from,
-            fontSize = 20.sp,
-            modifier = Modifier
-                .padding(16.dp)
-                //.align(alignment = Alignment.End)
-                .fillMaxWidth(),
-                textAlign = TextAlign.Justify
-
-        )
-        Text(
-            text = textTwo,
-            fontSize = 20.sp,
-            modifier = Modifier
-                .padding(16.dp)
-                //.align(alignment = Alignment.End)
-                .fillMaxWidth(),
-            textAlign = TextAlign.Justify
-
-        )
-    }
-}
-
-@Composable
-fun GreetingImage(message: String, messageTwo: String, modifier: Modifier = Modifier) {
-
+fun Greeting(modifier: Modifier = Modifier) {
     Box(
-        modifier = modifier
-            .fillMaxSize(),
-        //contentAlignment = Alignment.Center
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.LightGray),
+        contentAlignment = Alignment.Center
     ) {
         Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .fillMaxHeight()
-                .padding(16.dp)
-                .background(color = Color.DarkGray)
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
         ) {
+            // Aquí colocamos la imagen
+            Image(
+                painter = painterResource(id = R.drawable.android_logo),
+                contentDescription = null,
+                modifier = Modifier.size(200.dp).background(color = Color.DarkGray)
+            )
+
+            // Aquí colocamos el texto
+            Text(
+                text = "Aaron González Álvarez",
+                modifier = Modifier.padding(top = 1.dp),
+            )
+            Text(
+                text = "Junior Developer",
+                modifier = Modifier.padding(top = 1.dp),
+            )
+
             Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .weight(1f)
+                modifier = Modifier.padding(top = 100.dp),
+                verticalAlignment = Alignment.CenterVertically
             ) {
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .weight(1f)
-                        .padding(8.dp)
-                        .background(color = Color.Blue) // Color de fondo para la primera columna
-                        .padding(8.dp),
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    Text(
-                        text = "Text composable",
-                        fontSize = 15.sp,
-                        textAlign = TextAlign.Center,
-                    )
-                    Text(
-                        text = "Displays text and follows the recommended Material Design guidelines.",
-                        fontSize = 10.sp,
-                        textAlign = TextAlign.Center,
-                    )
-                }
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .weight(1f)
-                        .padding(8.dp)
-                        .background(color = Color.DarkGray) // Color de fondo para la segunda columna
-                        .padding(8.dp),
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    Text(
-                        text = "Image composable",
-                        fontSize = 15.sp,
-                        textAlign = TextAlign.Center,
-                    )
-                    Text(
-                        text = "Creates a composable that lays out and draws a given Painter class object.",
-                        fontSize = 10.sp,
-                        textAlign = TextAlign.Center,
-                    )
-                }
+                Icon(
+                    painter = painterResource(id = R.drawable.ic_baseline_local_phone_24),
+                    contentDescription = null,
+                    modifier = Modifier.size(24.dp)
+                )
+                Text(
+                    text = "+34 692354025",
+                    modifier = Modifier.padding(start = 8.dp)
+                )
             }
-            Spacer(modifier = Modifier.height(16.dp))
+
             Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .weight(1f)
+                modifier = Modifier.padding(top = 1.dp),
+                verticalAlignment = Alignment.CenterVertically
             ) {
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .weight(1f)
-                        .padding(8.dp)
-                        .background(color = Color.Red) // Color de fondo para la tercera columna
-                        .padding(8.dp),
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    Text(
-                        text = "Row composable",
-                        fontSize = 15.sp,
-                        textAlign = TextAlign.Center,
-                    )
-                    Text(
-                        text = "A layout composable that places its children in a horizontal sequence.",
-                        fontSize = 10.sp,
-                        textAlign = TextAlign.Center,
-                    )
-                }
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .weight(1f)
-                        .padding(8.dp)
-                        .background(color = Color.Yellow) // Color de fondo para la cuarta columna
-                        .padding(8.dp),
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    Text(
-                        text = "Column composable",
-                        fontSize = 15.sp,
-                        textAlign = TextAlign.Center
-                    )
-                    Text(
-                        text = "A layout composable that places its children in a vertical sequence.",
-                        fontSize = 10.sp,
-                        textAlign = TextAlign.Center
-                    )
-                }
+                Icon(
+                    painter = painterResource(id = R.drawable.ic_baseline_local_phone_24),
+                    contentDescription = null,
+                    modifier = Modifier.size(24.dp)
+                )
+                Text(
+                    text = "aaron060812@gmail.com",
+                    modifier = Modifier.padding(start = 8.dp)
+                )
+            }
+
+            Row(
+                modifier = Modifier.padding(top = 1.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Icon(
+                    painter = painterResource(id = R.drawable.ic_baseline_share_24),
+                    contentDescription = null,
+                    modifier = Modifier.size(24.dp)
+                )
+                Text(
+                    text = "@AaronGonzalezAlvarez",
+                    modifier = Modifier.padding(start = 8.dp)
+                )
             }
         }
     }
